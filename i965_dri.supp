@@ -1,0 +1,173 @@
+{
+   ioctl intel error
+   Memcheck:Param
+   ioctl(generic)
+   fun:ioctl
+   fun:drmIoctl
+   obj:/usr/lib64/libdrm_intel.so.1.0.0
+   obj:/usr/lib64/mesa/i965_dri.so
+}
+{
+   i965 errors
+   Memcheck:Addr4
+   obj:/usr/lib64/mesa/i965_dri.so
+}
+{
+   more i965 errors
+   Memcheck:Addr8
+   obj:/usr/lib64/mesa/i965_dri.so
+   obj:/usr/lib64/mesa/i965_dri.so
+}
+{
+   even more i965 errors
+   Memcheck:Addr1
+   obj:/usr/lib64/mesa/i965_dri.so
+}
+{
+   all sizes of i965 errors
+   Memcheck:Addr2
+   obj:/usr/lib64/mesa/i965_dri.so
+}
+{
+   i965 memset error
+   Memcheck:Addr8
+   fun:memset
+   obj:/usr/lib64/mesa/i965_dri.so
+}
+{
+   i965 memcpy error
+   Memcheck:Addr2
+   fun:memcpy@@GLIBC_2.14
+   obj:/usr/lib64/mesa/i965_dri.so
+}
+{
+   a more interesting error
+   Memcheck:Addr1
+   fun:__memcmp_sse4_1
+   obj:/usr/lib64/mesa/i965_dri.so
+}
+
+{
+   sdl x11 leak
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   fun:strdup
+   obj:/usr/lib64/libX11.so.6.3.0
+   fun:_XimSetICValueData
+   fun:_XimLocalCreateIC
+   fun:XCreateIC
+   obj:/usr/lib64/libSDL2-2.0.so.0.2.1
+   obj:/usr/lib64/libSDL2-2.0.so.0.2.1
+   obj:/usr/lib64/libSDL2-2.0.so.0.2.1
+   obj:/usr/lib64/libSDL2-2.0.so.0.2.1
+   obj:/usr/lib64/libSDL2-2.0.so.0.2.1
+   fun:start_subsystems
+}
+{
+   i965 possible leak
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   obj:/usr/lib64/mesa/i965_dri.so
+}
+{
+   this other annoying leak
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   fun:strdup
+   obj:/usr/lib64/libX11.so.6.3.0
+   fun:_XimSetICValueData
+   fun:_XimLocalCreateIC
+   fun:XCreateIC
+   obj:/usr/lib64/libSDL2-2.0.so.0.2.1
+}
+{
+   another possible leak
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   fun:strdup
+   obj:/usr/lib64/mesa/i965_dri.so
+}
+{
+   such i965 leak
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:calloc
+   obj:/usr/lib64/mesa/i965_dri.so
+}
+{
+   a gem indeed
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:calloc
+   fun:drm_intel_gem_context_create
+   obj:/usr/lib64/mesa/i965_dri.so
+}
+{
+   wtf is _Znwm
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:_Znwm
+   obj:/usr/lib64/mesa/i965_dri.so
+}
+{
+   alignment must be off
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:memalign
+   fun:posix_memalign
+   obj:/usr/lib64/mesa/i965_dri.so
+}
+{
+   why not this too
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:realloc
+   obj:/usr/lib64/mesa/i965_dri.so
+}
+{
+   drm doing great things
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:calloc
+   obj:/usr/lib64/libdrm_intel.so.1.0.0
+}
+{
+   moar moar
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   obj:/usr/lib64/mesa/i965_dri.so
+}
+{
+   no clue who to blame
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:calloc
+   obj:/usr/lib64/opengl/xorg-x11/lib/libGL.so.1.2.0
+}
+{
+   more suppressions than code
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:calloc
+   obj:/usr/lib64/mesa/i965_dri.so
+}
+{
+   more drm fun
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   obj:/usr/lib64/libdrm_intel.so.1.0.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   fun:strdup
+   obj:/usr/lib64/mesa/i965_dri.so
+}
