@@ -6,9 +6,10 @@
 #include "SDL2/SDL_opengl.h"
 #include "GL/glu.h"
 
-SDL_Renderer *renderer;
+SDL_GLContext opengl_context;
+SDL_Window *window;
 
-int create_window(void);
+int create_window(char *title, int width, int height);
 void free_window(void);
 
 #endif

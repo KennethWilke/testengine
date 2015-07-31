@@ -2,8 +2,15 @@
 #define __SHADERS_H__
 
 #include "testengine.h"
-#include "GL/glew.h"
 
-void test(void);
+
+typedef struct
+{
+	GLuint vertex;
+	GLuint fragment;
+	GLuint program;
+} shader;
+
+shader* load_shader(const char *vertex_file, const char *fragment_file);
 
 #endif

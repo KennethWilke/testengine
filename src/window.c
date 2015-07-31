@@ -1,43 +1,29 @@
 #include "window.h"
 
-SDL_Window *window;
-SDL_RendererInfo renderer_info;
-
 
 void free_window(void)
 {
+	SDL_GL_DeleteContext(opengl_context);
 	SDL_DestroyWindow(window);
-}
-
-
-void init_opengl()
-{
 }
 
 
 void set_viewport(int width, int height)
 {
-   glViewport(0, 0, (GLsizei) width, (GLsizei) height);
-   glLoadIdentity();
-   glFrustum(-1.0, 1.0, -1.0, 1.0, 1.5, 20.0);
-   glMatrixMode(GL_MODELVIEW);
 }
 
 
-int create_window(void)
+int create_window(char *title, int width, int height)
 {
-	if(SDL_CreateWindowAndRenderer(800, 600, SDL_WINDOW_OPENGL, &window,
-	                               &renderer))
-	{
-		fprintf(stderr, "Failed to initialize window: %s\n", SDL_GetError());
-	}
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK,
+	                    SDL_GL_CONTEXT_PROFILE_CORE);
 
-	SDL_GetRendererInfo(renderer, &renderer_info);
-	
-	printf("Renderer: %s\n", renderer_info.name);
+	window = SDL_CreateWindow(title, 0, 0, width, height, SDL_WINDOW_OPENGL);
+	opengl_context = SDL_GL_CreateContext(window);
 
-	init_opengl();
-	set_viewport(800, 600);
+	set_viewport(width, height);
 
 	return 0;
 }

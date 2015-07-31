@@ -2,7 +2,7 @@ CC=gcc -Wall
 CC_OBJ=$(CC) -c -o $@
 CC_BIN=$(CC) -o $@ $(LIBRARIES)
 OBJECTS=build/main.o build/window.o build/event.o build/drawing.o build/shaders.o
-LIBRARIES=-lSDL2 -lGL -lGLU -lGLEW
+LIBRARIES=-lSDL2 -lGL -lGLU
 
 all: bin/ build/ bin/test
 
